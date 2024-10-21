@@ -16,7 +16,7 @@ export default function Navbar() {
           <ul className="flex items-center">
             {navigation.map((item) => (
               <>
-                <li key={item.name}>
+                <li key={item.id}>
                   <Link
                     to={item.href}
                     className="transition-colors duration-300 hover:underline hover:text-blue-400"
@@ -25,7 +25,7 @@ export default function Navbar() {
                   </Link>
                 </li>
                 {navigation.length - 1 !== navigation.indexOf(item) && (
-                  <div className="block w-px h-6 mx-3 bg-gray-400"></div>
+                  <div className="block w-px h-6 mx-3 bg-gray-400" />
                 )}
               </>
             ))}

@@ -1,6 +1,6 @@
 import { FaStar } from "react-icons/fa6";
 
-export function RatingStar({ rating }: { rating: number }) {
+export default function RatingStar({ rating }: { rating: number }) {
   const rate = Math.round((rating / 10) * 5);
   return (
     <div className="flex items-center">

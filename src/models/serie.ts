@@ -14,4 +14,6 @@ export interface Serie {
     vote_average: number;
     vote_count: number;
     origin_country: string[];
+    title: string;
+    release_date: string;
 }

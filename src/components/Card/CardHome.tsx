@@ -1,5 +1,5 @@
 import type { CardProps } from "~/models";
-import { getDisplayName, getPoster } from "~/utils";
+import { getPoster } from "~/utils";
 
 export default function Card({ data }: CardProps) {
   const { poster_path, overview } = data;
@@ -14,9 +14,7 @@ export default function Card({ data }: CardProps) {
         />
       </picture>
       <div className="p-4">
-        <h2 className="font-semibold text-white truncate mb-2">
-          {getDisplayName({ data })}
-        </h2>
+        <h2 className="font-semibold text-white truncate mb-2">{data.title}</h2>
       </div>
     </div>
   );

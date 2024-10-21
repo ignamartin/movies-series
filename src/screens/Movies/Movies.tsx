@@ -1,13 +1,16 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { toast } from "sonner";
-import { Pagination } from "~/components/Pagination";
 import { CardPage } from "~/components/Card";
 import { Loading } from "~/components/Loading";
+import { Pagination } from "~/components/Pagination";
 import { ERROR_FETCH_DATA } from "~/constants";
+import type { Movie, Serie } from "~/models";
 import { getPopularMovies } from "~/services";
+import { useModal } from "~/store";
 
 export default function Movies() {
+  const { toggleState, setModalData } = useModal();
   const [page, setPage] = useState<number>();
 
   const {
@@ -27,6 +30,11 @@ export default function Movies() {
     toast.error(ERROR_FETCH_DATA);
   }
 
+  const handleOpenModal = (data: Movie | Serie) => () => {
+    setModalData({ data });
+    toggleState();
+  };
+
   return (
     <div className="container mx-auto px-6 py-8">
       {isPendingMovies && <Loading />}
@@ -37,7 +45,11 @@ export default function Movies() {
           </h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
             {movies?.results.map((movie) => (
-              <CardPage key={movie.id} data={movie} />
+              <CardPage
+                key={movie.id}
+                data={movie}
+                onClick={handleOpenModal(movie)}
+              />
             ))}
           </div>
           <Pagination

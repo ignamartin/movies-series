@@ -21,8 +21,8 @@ export default function AppRoutes() {
           <Route path="description/:id" element={<Description />} />
           <Route path="favourites" element={<Favourites />} />
           <Route path="error" element={<ErrorFallback />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Suspense>
   );

@@ -10,7 +10,9 @@ export default function SwiperHome({ data }: DataProps) {
   const navigate = useNavigate();
 
   const handleClick = (id: number) => {
-    navigate(`/categorias/${id}`);
+    console.log(id);
+    // navigate(`/categorias/${id}`);
+    navigate(`/description/`);
   };
 
   return (
@@ -24,10 +26,10 @@ export default function SwiperHome({ data }: DataProps) {
       {data.map((item) => (
         <SwiperSlide
           key={item.id}
-          onClick={() => handleClick(item.id)}
           className="cursor-pointer"
+          onClick={() => handleClick(item.id)}
         >
-          <CardHome data={item} />
+          <CardHome data={item}  />
         </SwiperSlide>
       ))}
     </Swiper>
