@@ -1,0 +1,1 @@
+export const ERROR_FETCH_DATA = "Estamos teniendo problemas para mostrar algunos elementos. Estamos trabajando para resolverlo.";

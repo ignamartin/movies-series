@@ -1,7 +1,9 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { toast } from "sonner";
+import { Loading } from "~/components/Loading";
 import { SwiperHome } from "~/components/Swiper";
-import { getPopularMovies, getTrendingSeries } from "~/services";
+import { ERROR_FETCH_DATA } from "~/constants";
+import { getPopularMovies, getPopularSeries } from "~/services";
 
 export default function Home() {
   const {
@@ -24,37 +26,33 @@ export default function Home() {
   } = useQuery({
     queryKey: ["trendingSeries"],
     queryFn: async () => {
-      const data = await getTrendingSeries();
+      const data = await getPopularSeries();
       return data;
     },
     placeholderData: keepPreviousData,
   });
 
-  const LoadingFunction = () => {
-    return <div>Loading...</div>;
-  };
-
   if (isErrorMovies || isErrorSeries) {
-    toast.error("ERROR_FETCH_DATA");
+    toast.error(ERROR_FETCH_DATA);
   }
 
   return (
-    <div className="container px-6 py-8 mx-auto flex flex-col">
-      {(isPendingMovies || isPendingSeries) && <LoadingFunction />}
-      {movies && series && (
+    <div className="container px-6 py-8 mx-auto flex flex-col min-h-screen">
+      {(isPendingMovies || isPendingSeries) && <Loading />}
+      {movies && (
         <>
           <h2 className="text-3xl font-bold text-white mb-8">
             Películas Populares
           </h2>
-          <div>
-            {movies && <SwiperHome data={movies.results} />}
-          </div>
-          <h2 className="text-3xl font-bold text-white mb-8">
+          <div>{movies && <SwiperHome data={movies.results} />}</div>
+        </>
+      )}
+      {series && (
+        <>
+          <h2 className="text-3xl font-bold text-white my-8">
             Series Populares
           </h2>
-          <div>
-            {series && <SwiperHome data={series.results} />}
-          </div>
+          <div>{series && <SwiperHome data={series.results} />}</div>
         </>
       )}
     </div>

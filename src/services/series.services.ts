@@ -1,5 +1,5 @@
+import { apiCall } from "~/config/axiosClient"
 import type { ApiResponse } from "~/models"
-import { apiCall } from "../config/axiosClient"
 
 export const getSeriesGenres = async () => {
   const { data } = await apiCall.get('genre/tv/list', {
@@ -10,10 +10,10 @@ export const getSeriesGenres = async () => {
   return data
 }
 
-export const getTrendingSeries = async (): Promise<ApiResponse> => {
-  const { data } = await apiCall.get<ApiResponse>('trending/tv/day', {
+export const getPopularSeries = async (page: number = 1): Promise<ApiResponse> => {
+  const { data } = await apiCall.get<ApiResponse>('tv/popular', {
     params: {
-      language: 'es-AR'
+      page: page,
     }
   })
   return data
