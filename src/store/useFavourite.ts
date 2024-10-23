@@ -2,9 +2,18 @@ import { create } from 'zustand'
 import type { FavouriteState } from '~/models'
 
 export const useFavourite = create<FavouriteState>((set, get) => ({
-    FavouriteState: [],
-    addFavourite: (id) => set(state => ({ FavouriteState: [...state.FavouriteState, id] })),
-    removeFavourite: (id) => set(state => ({ FavouriteState: state.FavouriteState.filter(item => item !== id) })),
-    toggleFavourite: (id) => get().FavouriteState.includes(id) ? get().removeFavourite(id) : get().addFavourite(id),
-    isFavourite: (id) => get().FavouriteState.includes(id),
-}))
+    favouriteState: [],
+    addFavourite: (id, type) => {
+        const isAlreadyFavourite = get().favouriteState.some(item => item.id === id);
+        if (!isAlreadyFavourite) {
+            set(state => ({ favouriteState: [...state.favouriteState, { id, type }] }));
+        }
+    },
+    removeFavourite: (id) => {
+        set(state => ({ favouriteState: state.favouriteState.filter(item => item.id !== id) }));
+    },
+    isFavourite: (id) => get().favouriteState.some(item => item.id === id),
+    getFavouritesByType: (type) => {
+        return get().favouriteState.filter(item => item.type === type);
+    },
+}));

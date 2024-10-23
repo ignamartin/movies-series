@@ -6,7 +6,7 @@ export const navigation = [
     },
     {
         id: 2,
-        name: "Peliculas",
+        name: "Películas",
         href: "/movies",
     },
     {

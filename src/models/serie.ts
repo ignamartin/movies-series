@@ -1,9 +1,8 @@
 export interface Serie {
     adult: boolean;
     backdrop_path: string;
-    genre_ids: number[];
+    genre_ids?: number[];
     id: number;
-    media_type: string;
     name: string;
     original_language: string;
     original_name: string;

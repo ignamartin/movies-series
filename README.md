@@ -1,50 +1,28 @@
-# React + TypeScript + Vite
+# Movies & Series
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una aplicación web sobre información de películas y series.
 
-Currently, two official plugins are available:
+## Descripción
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Movies & Series es una plataforma intuitiva que permite a los usuarios buscar, explorar y descubrir una amplia variedad de películas y series. Con una interfaz amigable, puedes acceder a detalles sobre cada título, incluyendo descripciones, fechas de lanzamiento, géneros y calificaciones.
 
-## Expanding the ESLint configuration
+## Características
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Detalles de Títulos**: Accede a información detallada sobre cada película o serie, incluyendo sinopsis, reparto, y más.
+- **Interfaz Amigable**: Navegación intuitiva y responsiva para una mejor experiencia de usuario.
+- **Lista de Favoritos**: Guarda tus películas y series preferidas para acceder a ellas rápidamente.
 
-- Configure the top-level `parserOptions` property like this:
+## Instalación
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Para instalar la aplicación, sigue estos pasos:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+1. Clona el repositorio
+2. Instala las dependencias: `npm install`
+3. Inicia el build de la aplicación: `npm run build`
+4. Inicia la aplicación: `npm run preview`
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Contacto
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarme:
+
+* Correo electrónico: [ignaciolmartin@gmail.com](mailto:ignaciolmartin@gmail.com)
